@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#171310">
+<title>Jukebox NFC</title>
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <main class="player" id="player">
+
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-mark">◎</span>
+        <span class="brand-name">Jukebox<em>NFC</em></span>
+      </div>
+      <div class="status" id="nfcStatus" data-state="idle">
+        <span class="status-dot"></span>
+        <span class="status-text">A preparar leitor…</span>
+      </div>
+    </header>
+
+    <section class="stage">
+      <div class="disc-wrap">
+        <div class="disc" id="disc">
+          <div class="disc-art" id="discArt" style="background-image:none;"></div>
+          <div class="disc-grooves"></div>
+          <div class="disc-hole"></div>
+        </div>
+        <div class="tonearm" id="tonearm" aria-hidden="true"></div>
+      </div>
+
+      <div class="track-info">
+        <p class="track-eyebrow" id="trackEyebrow">Nenhuma tag lida</p>
+        <h1 class="track-title" id="trackTitle">Encosta um disco NFC</h1>
+        <p class="track-artist" id="trackArtist">à parte de trás do telemóvel</p>
+      </div>
+    </section>
+
+    <section class="deck">
+      <div class="progress">
+        <span class="time" id="timeCurrent">0:00</span>
+        <input type="range" id="seek" class="seek" min="0" max="100" value="0" step="0.1">
+        <span class="time" id="timeTotal">0:00</span>
+      </div>
+
+      <div class="controls">
+        <button class="ctrl ctrl--ghost" id="btnStop" title="Parar" aria-label="Parar">
+          <svg viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="1.5"/></svg>
+        </button>
+        <button class="ctrl ctrl--main" id="btnPlay" title="Reproduzir / Pausar" aria-label="Reproduzir ou pausar">
+          <svg id="iconPlay" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          <svg id="iconPause" viewBox="0 0 24 24" hidden><rect x="6" y="5" width="4" height="14"/><rect x="14" y="5" width="4" height="14"/></svg>
+        </button>
+        <button class="ctrl ctrl--ghost" id="btnScan" title="Ler tag manualmente" aria-label="Ativar leitura NFC">
+          <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-7.07 17.07l1.41-1.41A8 8 0 1 1 20 12a8 8 0 0 1-2.34 5.66l1.41 1.41A10 10 0 0 0 12 2zm0 4a6 6 0 0 0-4.24 10.24l1.42-1.41A4 4 0 1 1 16 12a4 4 0 0 1-1.17 2.83l1.41 1.42A6 6 0 0 0 12 6z"/></svg>
+        </button>
+      </div>
+    </section>
+
+    <section class="log" id="log" aria-live="polite">
+      <p class="log-line log-line--muted">Pronto para ler tags NTAG213.</p>
+    </section>
+
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="assertive"></div>
+
+  <audio id="audioPlayer" preload="metadata"></audio>
+
+  <script src="tracks.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
