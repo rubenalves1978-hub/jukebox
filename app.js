@@ -645,5 +645,44 @@
         console.warn("Falha ao registar service worker:", err);
       });
     }
+
+    // restore last album if available (non-blocking)
+    try {
+      const last = localStorage.getItem(STORAGE_KEYS.LAST_ALBUM);
+      if (last && window.ALBUM_MAP && window.ALBUM_MAP[last]) {
+        // do not auto-play on load to avoid autoplay restrictions; just load album UI
+        AlbumController.loadAlbum(last, false);
+      }
+    } catch (e) {}
   });
+
+  /* =========================================================
+     8. Test helpers (exposed globally to assist testing without NFC)
+     ========================================================= */
+
+  window.JukeboxTest = {
+    // Simula a leitura de uma tag NDEF contendo o id do álbum
+    simulateTag(albumId) {
+      try {
+        if (window.ALBUM_MAP && window.ALBUM_MAP[albumId]) {
+          AlbumController.loadAlbum(albumId, true);
+          logLine(`Simulação: tag '${albumId}' processada.`, "ok");
+        } else if (window.TRACK_MAP && window.TRACK_MAP[albumId]) {
+          const track = window.TRACK_MAP[albumId];
+          AppState.albumId = null;
+          AppState.album = null;
+          AppState.currentIndex = null;
+          UI.showTrack(albumId, track);
+          AudioManager.loadAndPlay(track, ++AppState.sessionId);
+          logLine(`Simulação: tag legacy '${albumId}' processada.`, "ok");
+        } else {
+          UI.showUnknownTag(albumId);
+          logLine(`Simulação: identificador '${albumId}' não encontrado.`, "error");
+        }
+      } catch (e) {
+        console.error(e);
+      }
+    }
+  };
+
 })();
