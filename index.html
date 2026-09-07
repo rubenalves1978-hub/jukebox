@@ -40,6 +40,9 @@
         <h1 class="track-title" id="trackTitle">Encosta um disco NFC</h1>
         <p class="track-artist" id="trackArtist">à parte de trás do telemóvel</p>
       </div>
+
+      <!-- Track list for album (V2) -->
+      <ol class="track-list" id="trackList" aria-label="Lista de faixas"></ol>
     </section>
 
     <section class="deck">
@@ -50,6 +53,9 @@
       </div>
 
       <div class="controls">
+        <button class="ctrl ctrl--ghost" id="btnPrev" title="Anterior" aria-label="Anterior">
+          <svg viewBox="0 0 24 24"><path d="M11 19V5l-9 7 9 7zM20 5v14h-2V5h2z"/></svg>
+        </button>
         <button class="ctrl ctrl--ghost" id="btnStop" title="Parar" aria-label="Parar">
           <svg viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="1.5"/></svg>
         </button>
@@ -57,9 +63,21 @@
           <svg id="iconPlay" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
           <svg id="iconPause" viewBox="0 0 24 24" hidden><rect x="6" y="5" width="4" height="14"/><rect x="14" y="5" width="4" height="14"/></svg>
         </button>
-        <button class="ctrl ctrl--ghost" id="btnScan" title="Ler tag manualmente" aria-label="Ativar leitura NFC">
-          <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-7.07 17.07l1.41-1.41A8 8 0 1 1 20 12a8 8 0 0 1-2.34 5.66l1.41 1.41A10 10 0 0 0 12 2zm0 4a6 6 0 0 0-4.24 10.24l1.42-1.41A4 4 0 1 1 16 12a4 4 0 0 1-1.17 2.83l1.41 1.42A6 6 0 0 0 12 6z"/></svg>
+        <button class="ctrl ctrl--ghost" id="btnNext" title="Próxima" aria-label="Próxima">
+          <svg viewBox="0 0 24 24"><path d="M13 5v14l9-7-9-7zM4 5v14h2V5H4z"/></svg>
         </button>
+        <button class="ctrl ctrl--ghost" id="btnScan" title="Ler tag manualmente" aria-label="Ativar leitura NFC">
+          <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 14.5V7l5 4.5-5 5z"/></svg>
+        </button>
+      </div>
+
+      <div class="controls controls--secondary">
+        <button class="ctrl ctrl--ghost" id="btnRepeat" title="Repetir álbum" aria-label="Repetir álbum">
+          <svg viewBox="0 0 24 24"><path d="M17 1v4h-6v2l-4-4 4-4v2h6zM7 23v-4h6v-2l4 4-4 4v-2H7z"/></svg>
+        </button>
+        <div class="volume-wrap">
+          <input type="range" id="volume" min="0" max="1" step="0.01" value="1" aria-label="Volume">
+        </div>
       </div>
     </section>
 
