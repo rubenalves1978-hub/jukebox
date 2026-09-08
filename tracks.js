@@ -4,12 +4,12 @@ const ALBUM_MAP = {
     artist: "Artista",
     cover: "", // coloca "covers/album01.jpg" quando tiveres a capa
     tracks: [
-      { title: "Cinema", src: "audio/Cinema.mp3", artist: "" },
-      { title: "Faixa 02", src: "" },
-      { title: "Faixa 03", src: "" },
-      { title: "Faixa 04", src: "" },
-      { title: "Faixa 05", src: "" },
-      { title: "Faixa 06", src: "" }
+      { title: "Cinema", src: "audio/Cinema.mp3" },
+      { title: "Atende", src: "audio/Atende.mp3" },
+      { title: "Medo de ser", src: "audio/Medo de ser.mp3" },
+      { title: "Mensagem Vista", src: "audio/Mensagem Vista.mp3" },
+      { title: "Ninguém ensinou", src: "audio/Ninguém ensinou.mp3" },
+      { title: "Não devo nada", src: "audio/Não devo nada.mp3" }
     ]
   }
 };
