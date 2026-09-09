@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="pt-PT">
+        <!DOCTYPE html><html lang="pt-PT">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -10,100 +9,182 @@
 <link rel="apple-touch-icon" href="icons/icon-192.png">
 <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body>  <main class="player" id="player"><header class="topbar">
+  <div class="brand">
+    <span class="brand-mark">◎</span>
+    <span class="brand-name">Jukebox<em>NFC</em></span>
+  </div>
 
-  <main class="player" id="player">
+  <div class="status" id="nfcStatus" data-state="idle">
+    <button class="status-btn" id="btnScan" aria-label="Ler disco NFC" title="Ler disco NFC">
+      <svg viewBox="0 0 24 24">
+        <path d="M12 2a10 10 0 0 0-7.07 17.07l1.41-1.41A8 8 0 1 1 20 12a8 8 0 0 1-2.34 5.66l1.41 1.41A10 10 0 0 0 12 2zm0 4a6 6 0 0 0-4.24 10.24l1.42-1.41A4 4 0 1 1 16 12a4 4 0 0 1-4 4zm0-2a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/>
+      </svg>
+    </button>
+  </div>
 
-    <header class="topbar">
-      <div class="brand">
-        <span class="brand-mark">◎</span>
-        <span class="brand-name">Jukebox<em>NFC</em></span>
-      </div>
-      <div class="status" id="nfcStatus" data-state="idle">
-        <button class="status-btn" id="btnScan">
-          <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-7.07 17.07l1.41-1.41A8 8 0 1 1 20 12a8 8 0 0 1-2.34 5.66l1.41 1.41A10 10 0 0 0 12 2zm0 4a6 6 0 0 0-4.24 10.24l1.42-1.41A4 4 0 1 1 16 12a4 4 0 0 1-4 4zm0-2a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/></svg>
-        </button>
-        <span class="status-text" id="statusText">Toque no ícone NFC para ativar a leitura</span>
-      </div>
-      <button class="icon-btn" id="btnTheme" aria-label="Alternar tema">
-        <svg id="iconSun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-        <svg id="iconMoon" viewBox="0 0 24 24" hidden><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-      </button>
-      <button class="icon-btn" id="btnSettings" aria-label="Registo de eventos" title="Registo de eventos">
-        <svg viewBox="0 0 24 24"><path d="M12 15.5A3.5 3.5 0 1 1 15.5 12 3.5 3.5 0 0 1 12 15.5zm7.94-2.5a7.99 7.99 0 0 0 0-2l2.03-1.58a.5.5 0 0 0 .12-.64l-1.93-3.32a.5.5 0 0 0-.6-.22l-2.39.96a7.9 7.9 0 0 0-1.73-1v-2.3a.5.5 0 0 0-.41-.49l-3.68-.6a.5.5 0 0 0-.53.41v2.28a7.9 7.9 0 0 0-1.73 1l-2.39-.96a.5.5 0 0 0-.6.22l-1.93 3.32a.5.5 0 0 0 .12.64L5.06 9.5a8 8 0 0 0 0 2l-2.03 1.58a.5.5 0 0 0-.12.64l1.93 3.32a.5.5 0 0 0 .6.22l2.39-.96a7.9 7.9 0 0 0 1.73 1v2.3a.5.5 0 0 0 .41.49l3.68.6a.5.5 0 0 0 .53-.41v-2.28a7.9 7.9 0 0 0 1.73-1l2.39.96a.5.5 0 0 0 .6-.22l1.93-3.32a.5.5 0 0 0-.12-.64L19.94 12z"/></svg>
-      </button>
-    </header>
+  <button class="icon-btn" id="btnTheme" aria-label="Alternar tema">
+    <svg id="iconSun" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="5"/>
+      <line x1="12" y1="1" x2="12" y2="3"/>
+      <line x1="12" y1="21" x2="12" y2="23"/>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+      <line x1="1" y1="12" x2="3" y2="12"/>
+      <line x1="21" y1="12" x2="23" y2="12"/>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+    </svg>
 
-    <section class="stage">
-      <div class="disc-wrap">
-        <div class="disc" id="disc">
-          <div class="disc-art" id="discArt"></div>
-          <div class="disc-grooves"></div>
-          <div class="disc-hole"></div>
-        </div>
-        <div class="tonearm" id="tonearm" aria-hidden="true"></div>
-      </div>
+    <svg id="iconMoon" viewBox="0 0 24 24" hidden>
+      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+    </svg>
+  </button>
 
-      <div class="album-info">
-        <p class="album-eyebrow" id="albumEyebrow">Álbum</p>
-        <h1 class="album-title" id="albumTitle">Encosta um disco NFC</h1>
-        <p class="album-artist" id="albumArtist">à parte de trás do telemóvel</p>
-        <p class="album-count" id="albumCount"></p>
-      </div>
-    </section>
+  <button class="icon-btn" id="btnSettings" aria-label="Registo de eventos" title="Registo de eventos">
+    <svg viewBox="0 0 24 24">
+      <path d="M12 15.5A3.5 3.5 0 1 1 15.5 12 3.5 3.5 0 0 1 12 15.5zm7.94-2.5a7.99 7.99 0 0 0 0-2l2.03-1.58a.5.5 0 0 0 .12-.64l-1.93-3.32a.5.5 0 0 0-.6-.22l-2.39.96a7.9 7.9 0 0 0-1.73-1v-2.3a.5.5 0 0 0-.41-.49l-3.68-.6a.5.5 0 0 0-.53.41v2.28a7.9 7.9 0 0 0-1.73 1l-2.39-.96a.5.5 0 0 0-.6.22l-1.93 3.32a.5.5 0 0 0 .12.64L5.06 9.5a8 8 0 0 0 0 2l-2.03 1.58a.5.5 0 0 0-.12.64l1.93 3.32a.5.5 0 0 0 .6.22l2.39-.96a7.9 7.9 0 0 0 1.73 1v2.3a.5.5 0 0 0 .41.49l3.68.6a.5.5 0 0 0 .53-.41v-2.28a7.9 7.9 0 0 0 1.73-1l2.39.96a.5.5 0 0 0 .6-.22l1.93-3.32a.5.5 0 0 0 .12-.64L19.94 12z"/>
+    </svg>
+  </button>
+</header>
 
-    <section class="tracklist-card">
-      <div class="tracklist-head">
-        <svg viewBox="0 0 24 24" class="tracklist-icon"><path d="M4 6h16v2H4zM4 11h16v2H4zM4 16h10v2H4z"/></svg>
-        <span>Faixas do Álbum</span>
-      </div>
-      <ol class="tracklist" id="tracklist">
-        <!-- Faixas inseridas dinamicamente por app.js -->
-      </ol>
+<section class="stage">
+  <div class="disc-wrap">
+    <div class="disc" id="disc">
+      <div class="disc-art" id="discArt"></div>
+      <div class="disc-grooves"></div>
+      <div class="disc-hole"></div>
+    </div>
 
-      <div class="progress">
-        <span class="time" id="timeCurrent">0:00</span>
-        <input type="range" id="seek" class="seek" min="0" max="100" value="0" step="0.1">
-        <span class="time" id="timeTotal">0:00</span>
-      </div>
+    <div class="tonearm" id="tonearm" aria-hidden="true"></div>
+  </div>
 
-      <div class="controls">
-        <button class="ctrl ctrl--ghost" id="btnRepeat" title="Repetir faixa" aria-label="Repetir faixa">
-          <svg viewBox="0 0 24 24"><path d="M7 7h10v3l4-4-4-4v3H5v6h2zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2z"/></svg>
-        </button>
-        <button class="ctrl ctrl--ghost" id="btnPrev" title="Faixa anterior" aria-label="Faixa anterior">
-          <svg viewBox="0 0 24 24"><path d="M6 6h2v12H6zm3.5 6 8.5 6V6z"/></svg>
-        </button>
-        <button class="ctrl ctrl--main" id="btnPlay" title="Reproduzir / Pausar" aria-label="Reproduzir ou pausar">
-          <svg id="iconPlay" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-          <svg id="iconPause" viewBox="0 0 24 24" hidden><rect x="6" y="5" width="4" height="14"/><rect x="14" y="5" width="4" height="14"/></svg>
-        </button>
-        <button class="ctrl ctrl--ghost" id="btnNext" title="Faixa seguinte" aria-label="Faixa seguinte">
-          <svg viewBox="0 0 24 24"><path d="M16 6h2v12h-2zM6 18l8.5-6L6 6z"/></svg>
-        </button>
-        <button class="ctrl ctrl--ghost" id="btnStop" title="Parar" aria-label="Parar">
-          <svg viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="1.5"/></svg>
-        </button>
-      </div>
+  <div class="album-info">
+    <p class="album-eyebrow" id="albumEyebrow">Álbum</p>
+    <h1 class="album-title" id="albumTitle">Encosta um disco NFC</h1>
+    <p class="album-artist" id="albumArtist">à parte de trás do telemóvel</p>
+    <p class="album-count" id="albumCount"></p>
+  </div>
+</section>
 
-      <div class="volume-row">
-        <svg class="volume-icon" viewBox="0 0 24 24"><path d="M3 10v4h4l5 5V5L7 10z"/></svg>
-        <input type="range" id="volume" class="volume" min="0" max="100" value="100" step="1">
-        <svg class="volume-icon" viewBox="0 0 24 24"><path d="M3 10v4h4l5 5V5L7 10zm11.5 2a4.5 4.5 0 0 0-2.5-4v8a4.5 4.5 0 0 0 2.5-4zM14 3.2v2.1c2.9.9 5 3.5 5 6.7s-2.1 5.8-5 6.7v2.1c4-.9 7-4.5 7-8.8s-3-7.9-7-8.8z"/></svg>
-      </div>
-    </section>
+<section class="tracklist-card">
 
-    <section class="log" id="log" aria-live="polite" hidden>
-      <p class="log-line log-line--muted">Pronto para ler tags NTAG213.</p>
-    </section>
+  <div class="tracklist-head">
+    <svg viewBox="0 0 24 24" class="tracklist-icon">
+      <path d="M4 6h16v2H4zM4 11h16v2H4zM4 16h10v2H4z"/>
+    </svg>
+    <span>Faixas do Álbum</span>
+  </div>
 
-  </main>
+  <!-- PROGRESSO -->
+  <div class="progress">
+    <span class="time" id="timeCurrent">0:00</span>
 
-  <div class="toast" id="toast" role="status" aria-live="assertive"></div>
+    <input
+      type="range"
+      id="seek"
+      class="seek"
+      min="0"
+      max="100"
+      value="0"
+      step="0.1"
+    >
 
-  <audio id="audioPlayer" preload="metadata"></audio>
+    <span class="time" id="timeTotal">0:00</span>
+  </div>
 
-  <script src="tracks.js"></script>
-  <script src="app.js"></script>
-</body>
-</html>
+  <!-- CONTROLOS -->
+  <div class="controls">
+
+    <button class="ctrl ctrl--ghost"
+            id="btnRepeat"
+            title="Repetir faixa"
+            aria-label="Repetir faixa">
+      <svg viewBox="0 0 24 24">
+        <path d="M7 7h10v3l4-4-4-4v3H5v6h2zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2z"/>
+      </svg>
+    </button>
+
+    <button class="ctrl ctrl--ghost"
+            id="btnPrev"
+            title="Faixa anterior"
+            aria-label="Faixa anterior">
+      <svg viewBox="0 0 24 24">
+        <path d="M6 6h2v12H6zm3.5 6 8.5 6V6z"/>
+      </svg>
+    </button>
+
+    <button class="ctrl ctrl--main"
+            id="btnPlay"
+            title="Reproduzir / Pausar"
+            aria-label="Reproduzir ou pausar">
+
+      <svg id="iconPlay" viewBox="0 0 24 24">
+        <path d="M8 5v14l11-7z"/>
+      </svg>
+
+      <svg id="iconPause" viewBox="0 0 24 24" hidden>
+        <rect x="6" y="5" width="4" height="14"/>
+        <rect x="14" y="5" width="4" height="14"/>
+      </svg>
+
+    </button>
+
+    <button class="ctrl ctrl--ghost"
+            id="btnNext"
+            title="Faixa seguinte"
+            aria-label="Faixa seguinte">
+      <svg viewBox="0 0 24 24">
+        <path d="M16 6h2v12h-2zM6 18l8.5-6L6 6z"/>
+      </svg>
+    </button>
+
+    <button class="ctrl ctrl--ghost"
+            id="btnStop"
+            title="Parar"
+            aria-label="Parar">
+      <svg viewBox="0 0 24 24">
+        <rect x="6" y="6" width="12" height="12" rx="1.5"/>
+      </svg>
+    </button>
+
+  </div>
+
+  <!-- VOLUME -->
+  <div class="volume-row">
+    <svg class="volume-icon" viewBox="0 0 24 24">
+      <path d="M3 10v4h4l5 5V5L7 10z"/>
+    </svg>
+
+    <input
+      type="range"
+      id="volume"
+      class="volume"
+      min="0"
+      max="100"
+      value="100"
+      step="1"
+    >
+
+    <svg class="volume-icon" viewBox="0 0 24 24">
+      <path d="M3 10v4h4l5 5V5L7 10zm11.5 2a4.5 4.5 0 0 0-2.5-4v8a4.5 4.5 0 0 0 2.5-4zM14 3.2v2.1c2.9.9 5 3.5 5 6.7s-2.1 5.8-5 6.7v2.1c4-.9 7-4.5 7-8.8s-3-7.9-7-8.8z"/>
+    </svg>
+  </div>
+
+  <!-- LISTA DE FAIXAS -->
+  <ol class="tracklist" id="tracklist">
+    <!-- Faixas inseridas dinamicamente por app.js -->
+  </ol>
+
+</section>
+
+<section class="log" id="log" aria-live="polite" hidden>
+  <p class="log-line log-line--muted">
+    Pronto para ler tags NTAG213.
+  </p>
+</section>
+
+  </main>  <div class="toast" id="toast" role="status" aria-live="assertive"></div><audio id="audioPlayer" preload="metadata"></audio>
+
+  <script src="tracks.js"></script>  <script src="app.js"></script></body>
+        </html>
