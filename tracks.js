@@ -38,7 +38,7 @@ const ALBUM_MAP = {
       { title: "Não devo nada", src: "audio/Não devo nada.mp3" },
       { title: "Não te escondas", src: "audio/Não te escondas.mp3" },
       { title: "Poucos... Mas leais (cover)", src: "audio/Poucos... Mas leais.cover.mp3" },
-      { title: "Whatever \"cara fechada\"", src: "audio/Whatever \"cara fechada\".mp3" },
+      { title: "Whatever", src: "audio/Whatever.mp3" },
     ],
   },
 
