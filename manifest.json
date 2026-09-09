@@ -2,7 +2,7 @@
   "name": "Jukebox NFC",
   "short_name": "Jukebox NFC",
   "description": "Leitor de música ativado por tags NFC (NTAG213)",
-  "start_url": "./index.html",
+  "start_url": "./",
   "scope": "./",
   "display": "standalone",
   "orientation": "portrait",
