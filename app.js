@@ -47,9 +47,12 @@
     btnNext: document.getElementById("btnNext"),
     btnRepeat: document.getElementById("btnRepeat"),
     btnScan: document.getElementById("btnScan"),
+    btnTheme: document.getElementById("btnTheme"),
     btnSettings: document.getElementById("btnSettings"),
     iconPlay: document.getElementById("iconPlay"),
     iconPause: document.getElementById("iconPause"),
+    iconSun: document.getElementById("iconSun"),
+    iconMoon: document.getElementById("iconMoon"),
     nfcStatus: document.getElementById("nfcStatus"),
     statusText: document.getElementById("statusText"),
     log: document.getElementById("log"),
@@ -65,6 +68,7 @@
     album: null,
     trackIndex: -1,
     repeat: false,
+    isDarkMode: !localStorage.getItem("theme") || localStorage.getItem("theme") === "dark",
   };
 
   /* =========================================================
@@ -299,7 +303,7 @@
           </span>
           <span class="track-num">${String(index + 1).padStart(2, "0")}</span>
           <span class="track-name">${escapeHtml(track.title)}</span>
-          <span class="track-meta">${hasFile ? "" : "A aguardar ficheiro"}</span>
+          <span class="track-meta"></span>
         `;
 
         row.addEventListener("click", () => AudioManager.playTrack(index));
@@ -314,12 +318,6 @@
       rows.forEach((row) => {
         const isCurrent = Number(row.dataset.index) === state.trackIndex;
         row.classList.toggle("is-current", isCurrent);
-
-        const meta = row.querySelector(".track-meta");
-        const track = state.album?.tracks[Number(row.dataset.index)];
-        if (track?.src && meta) {
-          meta.textContent = isCurrent ? formatTime(els.audio.duration) : "";
-        }
       });
     },
 
@@ -337,6 +335,16 @@
 
     setScanButtonActive(active) {
       els.btnScan.parentElement.classList.toggle("is-active", active);
+    },
+
+    toggleTheme() {
+      state.isDarkMode = !state.isDarkMode;
+      const newTheme = state.isDarkMode ? "dark" : "light";
+      localStorage.setItem("theme", newTheme);
+      document.body.classList.toggle("light-mode", !state.isDarkMode);
+      
+      els.iconSun.hidden = !state.isDarkMode;
+      els.iconMoon.hidden = state.isDarkMode;
     },
   };
 
@@ -461,7 +469,7 @@
         if (record.recordType === "url") {
           try {
             const url = decoder.decode(record.data).trim();
-            const segments = url.split(/[/:]/).filter(Boolean);
+            const segments = url.split(/[\/:]/).filter(Boolean);
             return segments[segments.length - 1];
           } catch (e) {
             console.warn("Erro a descodificar registo de URL:", e);
@@ -500,8 +508,17 @@
      ========================================================= */
 
   document.addEventListener("DOMContentLoaded", () => {
+    // Aplicar tema guardado
+    if (!state.isDarkMode) {
+      document.body.classList.add("light-mode");
+      els.iconSun.hidden = true;
+      els.iconMoon.hidden = false;
+    }
+
     AudioManager.init();
     NfcManager.init();
+
+    els.btnTheme.addEventListener("click", () => UI.toggleTheme());
 
     els.btnSettings.addEventListener("click", () => {
       els.log.hidden = !els.log.hidden;
